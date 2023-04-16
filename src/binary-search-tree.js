@@ -33,25 +33,17 @@ class BinarySearchTree {
 	}
 	pasteNode(node, newNode) {
 		if (newNode.data < node.data) {
-			if (node.left === null) {
-				node.left = newNode;
-			} else {
-				this.pasteNode(node.left, newNode);
-			}
+			node.left === null
+				? (node.left = newNode)
+				: this.pasteNode(node.left, newNode);
 		} else {
-			if (node.right === null) {
-				node.right = newNode;
-			} else {
-				this.pasteNode(node.right, newNode);
-			}
+			node.right === null
+				? (node.right = newNode)
+				: this.pasteNode(node.right, newNode);
 		}
 	}
 	has(data) {
-		if (searchNode(this.core, data)) {
-			return true;
-		} else {
-			return false;
-		}
+		return searchNode(this.core, data) ? true : false;
 		function searchNode(node, value) {
 			if (node === null) {
 				return null;
@@ -80,11 +72,24 @@ class BinarySearchTree {
 			}
 		}
 	}
+
 	remove(data) {}
 
-	min() {}
+	min() {
+		let node = this.core;
+		while (node.left !== null) {
+			node = node.left;
+		}
+		return node.data;
+	}
 
-	max() {}
+	max() {
+		let node = this.core;
+		while (node.right !== null) {
+			node = node.right;
+		}
+		return node.data;
+	}
 }
 
 module.exports = {
