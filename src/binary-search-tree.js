@@ -21,15 +21,11 @@ class BinarySearchTree {
 	root() {
 		return this.core;
 	}
-
 	add(data) {
 		let newNode = new Node(data);
-		if (this.core === null) {
-			this.core = newNode;
-			return;
-		} else {
-			this.pasteNode(this.core, newNode);
-		}
+		this.core === null
+			? (this.core = newNode)
+			: this.pasteNode(this.core, newNode);
 	}
 	pasteNode(node, newNode) {
 		if (newNode.data < node.data) {
@@ -48,13 +44,11 @@ class BinarySearchTree {
 			if (node === null) {
 				return null;
 			}
-			if (value === node.data) {
-				return node;
-			} else if (value < node.data) {
-				return searchNode(node.left, value);
-			} else if (value > node.data) {
-				return searchNode(node.right, data);
-			}
+			return value === node.data
+				? node
+				: value < node.data
+				? searchNode(node.left, value)
+				: searchNode(node.right, data);
 		}
 	}
 	find(data) {
@@ -63,18 +57,14 @@ class BinarySearchTree {
 			if (node === null) {
 				return null;
 			}
-			if (value === node.data) {
-				return node;
-			} else if (value < node.data) {
-				return searchNode(node.left, value);
-			} else if (value > node.data) {
-				return searchNode(node.right, data);
-			}
+			return value === node.data
+				? node
+				: value < node.data
+				? searchNode(node.left, value)
+				: searchNode(node.right, data);
 		}
 	}
-
 	remove(data) {}
-
 	min() {
 		let node = this.core;
 		while (node.left !== null) {
@@ -82,7 +72,6 @@ class BinarySearchTree {
 		}
 		return node.data;
 	}
-
 	max() {
 		let node = this.core;
 		while (node.right !== null) {
