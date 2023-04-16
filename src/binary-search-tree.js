@@ -46,10 +46,40 @@ class BinarySearchTree {
 			}
 		}
 	}
-	has(data) {}
-
-	find(data) {}
-
+	has(data) {
+		if (searchNode(this.core, data)) {
+			return true;
+		} else {
+			return false;
+		}
+		function searchNode(node, value) {
+			if (node === null) {
+				return null;
+			}
+			if (value === node.data) {
+				return node;
+			} else if (value < node.data) {
+				return searchNode(node.left, value);
+			} else if (value > node.data) {
+				return searchNode(node.right, data);
+			}
+		}
+	}
+	find(data) {
+		return searchNode(this.core, data);
+		function searchNode(node, value) {
+			if (node === null) {
+				return null;
+			}
+			if (value === node.data) {
+				return node;
+			} else if (value < node.data) {
+				return searchNode(node.left, value);
+			} else if (value > node.data) {
+				return searchNode(node.right, data);
+			}
+		}
+	}
 	remove(data) {}
 
 	min() {}
